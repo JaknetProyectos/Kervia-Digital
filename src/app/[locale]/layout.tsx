@@ -3,23 +3,29 @@ import "../globals.css";
 import { ClientBody } from "@/components/shared/ClientBody";
 import { Navigation } from "@/components/shared/Navigation";
 import { Footer } from "@/components/shared/Footer";
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from "next-intl";
 
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 
-const playfair = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Marketing Resultados ",
-  description: "A marketing agency focused on helping businesses grow with disruptive communication, strategic events, and targeted strategies.",
+  title: {
+    default: "Kervia Digital | Estrategia, creatividad y crecimiento",
+    template: "%s | Kervia Digital",
+  },
+  description:
+    "Agencia de marketing enfocada en impulsar marcas mediante estrategias dirigidas, comunicación disruptiva y experiencias diseñadas para generar crecimiento.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -35,15 +41,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   return (
-
-    <html lang={locale} className={`${playfair.variable} ${dmSans.variable} scroll-smooth`}>
-      <body className="bg-background text-foreground antialiased min-h-screen flex flex-col font-sans">
+    <html
+      lang={locale}
+      className={`${spaceGrotesk.variable} ${dmSans.variable} scroll-smooth`}
+    >
+      <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         <NextIntlClientProvider locale={locale} messages={{}}>
           <ClientBody>
             <Navigation />
-            <main className="flex-grow">
-              {children}
-            </main>
+
+            <main className="flex-grow">{children}</main>
+
             <Footer />
           </ClientBody>
         </NextIntlClientProvider>
