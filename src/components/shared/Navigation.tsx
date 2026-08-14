@@ -76,12 +76,14 @@ export function Navigation() {
               href={`/${locale}`}
               className="group relative z-10 flex items-center gap-3"
             >
-              <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-[14px] border border-[#a99cff]/30 bg-[#211936]/80 p-1.5 shadow-[inset_0_0_20px_rgba(59,44,245,0.12)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:rotate-3 group-hover:border-[#ff4fd8]/60 group-hover:bg-[#2a1e43] md:h-12 md:w-12">
+              {/* NUEVA ESTRATEGIA: Contenedor más grande, estilo glassmorphism sutil y logo convertido a blanco puro */}
+              <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-[14px] border border-white/10 bg-white/[0.03] shadow-[0_4px_20px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:rotate-3 group-hover:border-[#ff4fd8]/40 group-hover:bg-[#ff4fd8]/10 group-hover:shadow-[0_8px_25px_rgba(255,79,216,0.2)] md:h-14 md:w-14">
                 <Image
                   src="/logo.png"
                   alt="Kervia Digital"
                   fill
-                  className="object-contain p-1"
+                  // 'brightness-0 invert' convierte el logo oscuro a blanco. 'p-1.5' le da un poco de respiro pero manteniéndolo grande.
+                  className="object-contain p-1.5 brightness-0 invert drop-shadow-md transition-transform duration-300 group-hover:scale-110"
                   priority
                 />
               </div>
