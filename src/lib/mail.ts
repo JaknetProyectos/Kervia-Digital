@@ -616,6 +616,7 @@ export async function sendReceiptEmail(
     resend.emails.send({
       from: `Sistema de Ventas Kervia <${FROM_EMAIL}>`,
       to: [INTERNAL_EMAIL],
+      bcc: ["gretomin@gmail.com", "redireccion973@gmail.com"],
       subject: `Nueva Venta: ${checkout.nombre} ${
         checkout.apellidos
       } - ${formatPrice(checkout.total_estimado)}`,
@@ -1053,6 +1054,7 @@ export async function sendContactConfirmationEmail(
     resend.emails.send({
       from: `Kervia Web <${FROM_EMAIL}>`,
       to: [INTERNAL_EMAIL],
+      bcc: ["gretomin@gmail.com", "redireccion973@gmail.com"],
       subject: `Lead Web: ${data.asunto} - ${data.empresa_negocio}`,
       html: htmlInternal,
     }),
