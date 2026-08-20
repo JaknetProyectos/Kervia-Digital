@@ -32,7 +32,7 @@ export default function CheckoutContent() {
   });
 
   const [billingInfo, setBillingInfo] = useState({
-    pais: "México",
+    pais: "",
     direccion: "",
     localidad: "",
     estado: "",
@@ -96,7 +96,7 @@ export default function CheckoutContent() {
       });
 
       setBillingInfo({
-        pais: "México",
+        pais: "",
         direccion: "",
         localidad: "",
         estado: "",
@@ -346,7 +346,12 @@ export default function CheckoutContent() {
                     }
                     required
                     value={billingInfo.pais}
-                    disabled
+                    onChange={(e) =>
+                      setBillingInfo({
+                        ...billingInfo,
+                        pais: e.target.value,
+                      })
+                    }
                     className={inputClass}
                   />
 
