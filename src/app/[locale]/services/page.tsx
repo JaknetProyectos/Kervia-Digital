@@ -85,12 +85,12 @@ export default async function ServicesPage({
               <span className="h-2 w-2 rounded-full bg-[#ff4fd8] shadow-[0_0_14px_rgba(255,79,216,0.8)]" />
 
               <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#a99cff]">
-                Strategy · Communication · Growth
+                {isEs? "Estrategia · Comunicación · Crecimiento" : "Strategy · Communication · Growth"}
               </span>
             </div>
 
             <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#81788f]">
-              01 / Services
+              01 / {isEs? "Servicios" : "Services"}
             </span>
           </div>
         </div>

@@ -254,7 +254,7 @@ export default function ContactPage() {
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#7b4dff]/35" />
 
               <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#91879f]">
-                Strategy · Creativity · Growth
+                {isEs ? "Estrategia · Creatividad · Crecimiento" : "Strategy · Creativity · Growth"}
               </span>
 
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#ff4fd8]/35" />
@@ -281,7 +281,7 @@ export default function ContactPage() {
                 <div className="mb-8 flex items-center justify-between gap-5 border-b border-white/[0.07] pb-6">
                   <div>
                     <span className="mb-2 block text-[9px] font-bold uppercase tracking-[0.25em] text-[#ff4fd8]">
-                      04 / Brief
+                      04 / {isEs ? "Ver Estrategias" : "View Strategies"}
                     </span>
 
                     <h2 className="text-2xl font-bold tracking-[-0.03em] text-[#f6f2ff]">

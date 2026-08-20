@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
 
+
 export function Footer() {
   const locale = useLocale();
   const pathname = usePathname();
@@ -116,7 +117,7 @@ export function Footer() {
               <span className="h-px w-12 bg-gradient-to-r from-[#7b4dff] to-[#ff4fd8]" />
 
               <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#a99cff]/70">
-                Strategy · Creativity · Growth
+                {locale === "es" ? "Estrategia · Creatividad · Crecimiento" : "Strategy · Creativity · Growth"}
               </span>
             </div>
           </div>

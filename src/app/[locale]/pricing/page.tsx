@@ -148,7 +148,7 @@ export default function CustomPricingPage() {
                 </div>
 
                 <span className="text-[9px] font-bold uppercase tracking-[0.24em] text-[#ff78df]">
-                  Custom / 01
+                  {isEs? "Personalizado":"Custom"} / 01
                 </span>
               </div>
 
@@ -210,7 +210,7 @@ export default function CustomPricingPage() {
               <div className="mb-8 flex items-center justify-between gap-5 border-b border-white/[0.07] pb-6">
                 <div>
                   <span className="mb-2 block text-[9px] font-bold uppercase tracking-[0.25em] text-[#ff4fd8]">
-                    02 / Quote form
+                    02 / {isEs ? "Formulario de Cotización" : "Quote Form"}
                   </span>
 
                   <h2 className="text-2xl font-bold tracking-[-0.03em] text-[#f6f2ff]">

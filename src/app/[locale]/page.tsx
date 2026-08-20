@@ -89,7 +89,7 @@ export default async function HomePage({
                 </div>
 
                 <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#81788f]">
-                  Kervia Digital · Creative Growth
+                  Kervia Digital · {isEs ? " Crecimiento Creativo" : "Creative Growth"}
                 </span>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default async function HomePage({
         {/* Indicador lateral */}
         <div className="pointer-events-none absolute bottom-10 right-8 hidden items-center gap-3 lg:flex">
           <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-[#81788f]">
-            01 / Home
+            {isEs ? "01 / Inicio" : "01 / Home"}
           </span>
 
           <span className="h-px w-14 bg-gradient-to-r from-[#7b4dff]/70 to-transparent" />

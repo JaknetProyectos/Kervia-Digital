@@ -126,7 +126,7 @@ export default function About() {
             <div className="relative z-10 mt-12 flex items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-[#ff4fd8] shadow-[0_0_14px_rgba(255,79,216,0.8)]" />
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#a99cff]">
-                Strategy · Creativity · Growth
+                {locale === "es" ? "Estrategia · Creatividad · Crecimiento" : "Strategy · Creativity · Growth"}
               </span>
             </div>
           </motion.div>
@@ -140,7 +140,7 @@ export default function About() {
             <div className="mb-9 flex items-center justify-between gap-6">
               <div>
                 <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.26em] text-[#e333bd]">
-                  02 / Purpose
+                  02 / {isEs ? "Visión y Propósito" : "Vision & Purpose"}
                 </span>
 
                 <h3 className="text-3xl font-bold tracking-[-0.03em] text-[#171020]">
@@ -214,7 +214,7 @@ export default function About() {
           <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.28em] text-[#7b4dff]">
-                03 / Expertise
+                03 / {isEs? "Experto" : "Expertise"}
               </span>
 
               <h3 className="text-3xl font-bold tracking-[-0.035em] text-[#171020] lg:text-4xl">

@@ -46,7 +46,7 @@ export function HeroVisuals({ locale }: { locale: string }) {
         <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
           <div>
             <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.24em] text-[#ff4fd8]">
-              01 / Strategy
+              01 / {isEs ? "Estrategia" : "Strategy"}
             </span>
 
             <p className="max-w-xs text-lg font-medium leading-snug text-white lg:text-xl">
@@ -83,7 +83,7 @@ export function HeroVisuals({ locale }: { locale: string }) {
 
         <div className="absolute bottom-5 left-5 rounded-xl border border-white/10 bg-[#0d0b16]/65 px-4 py-3 backdrop-blur-md">
           <span className="block text-[9px] font-bold uppercase tracking-[0.22em] text-[#a99cff]">
-            02 / Creative
+            02 / {isEs ? "Creativo" : "Creative"}
           </span>
 
           <span className="mt-1 block text-sm font-medium text-white">
@@ -113,7 +113,7 @@ export function HeroVisuals({ locale }: { locale: string }) {
 
         <div className="absolute right-3 top-3 rounded-lg border border-white/15 bg-[#0d0b16]/65 px-3 py-2 backdrop-blur-md">
           <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#ff4fd8]">
-            03 / Space
+            03 / {isEs ? "Espacio" : "Space"}
           </span>
         </div>
       </motion.div>

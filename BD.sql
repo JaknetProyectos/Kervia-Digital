@@ -123,10 +123,12 @@ CREATE POLICY "Insertar pagos personalizados NC" ON public.custom_plan_payments_
 -- 4. INSERTAR DATOS (CATEGORÍAS Y PLANES)
 -- =====================================================================================
 INSERT INTO public.categories_nc (name, slug) VALUES 
-('Planes de marketing', 'planes-de-marketing');
+('Planes de marketing', 'planes-de-marketing'),
+('Servicios adicionales', 'servicios-adicionales');
 
 INSERT INTO public.plans_nc (title, slug, category_id, price, description, features) VALUES
 
+-- ==================== PLANES DE MARKETING ========================
 ('Plan Ultra Premium', 'plan-ultra-premium', 1, 25000.00, 'Plan estratégico y orientado a resultados para maximizar tu inversión en marketing.', 
 '["Investigación de mercado Ultra Premium: Análisis detallado de competencia, segmentos, comportamientos, datos y estudios de caso.", "Creación de una estrategia de marketing de élite: Estrategia avanzada y personalizada de marketing digital y tradicional.", "Creación de materiales de marketing avanzados: Desarrollo de identidad de marca (logotipo y materiales gráficos).", "Creación de materiales de marketing más avanzados: Producción de 3 videos de alta gama de hasta 25 segundos.", "Gestión de anuncios publicitarios: Optimización avanzada de anuncios en varias plataformas con segmentación precisa.", "Consultoría estratégica de alto nivel: Estrategias de crecimiento, análisis de datos continuos y sesiones de optimización personalizadas.", "Planificación y ejecución de eventos grandes: Apoyo integral en la organización de grandes eventos o lanzamientos de productos."]'::jsonb),
 
@@ -149,7 +151,21 @@ INSERT INTO public.plans_nc (title, slug, category_id, price, description, featu
 '["Investigación de mercado básica: Análisis más detallado con una encuesta aplicada a 10 personas.", "Creación de una estrategia de marketing simple: Estrategia básica más enfocada en las fortalezas del cliente.", "Creación de materiales de marketing básicos: 1 folleto con diseño personalizado."]'::jsonb),
 
 ('Plan Básico', 'plan-basico', 1, 3500.00, 'Tu primer gran paso a una estrategia de marketing exitosa.', 
-'["Investigación de mercado básica: Análisis sencillo de mercado, competencia y perfil del cliente ideal.", "Creación de una estrategia de marketing simple: Estrategia básica adaptada a las necesidades generales del cliente."]'::jsonb);
+'["Investigación de mercado básica: Análisis sencillo de mercado, competencia y perfil del cliente ideal.", "Creación de una estrategia de marketing simple: Estrategia básica adaptada a las necesidades generales del cliente."]'::jsonb),
+
+-- ==================== SERVICIOS ADICIONALES ========================
+('Diagnóstico Comercial Inicial', 'diagnostico-comercial-inicial', 2, 403.00, 'Conoce el punto de partida de tu negocio antes de invertir en marketing.', 
+'["Revisión básica del negocio mediante formulario.", "Análisis general de presencia digital."]'::jsonb),
+
+('Investigación de Mercado Básica', 'investigacion-de-mercado-basica-servicio', 2, 910.00, 'Entiende tu mercado, a tu competencia y a tu cliente ideal.', 
+'["Investigación básica del mercado objetivo.", "Análisis de hasta 5 competidores.", "Definición de cliente ideal."]'::jsonb),
+
+('Estrategia de Marketing Básica', 'estrategia-de-marketing-basica-servicio', 2, 1860.00, 'Una estrategia de marketing clara y validada para arrancar con paso firme.', 
+'["Investigación de mercado básica.", "Encuesta o validación de información con hasta 10 participantes."]'::jsonb),
+
+('Sesión de soporte técnico 10 minutos', 'sesion-de-soporte-tecnico-10-minutos', 2, 294.00, 'Asesoría directa por videollamada para resolver tus dudas.', 
+'["Videollamada de 10 minutos.", "Resolución de dudas y soporte técnico sobre servicios contratados anteriormente."]'::jsonb);
+
 
 -- =====================================================================================
 -- 5. INSERTAR EL "PLAN PERSONALIZADO" BASE

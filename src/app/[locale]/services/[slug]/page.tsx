@@ -80,6 +80,9 @@ export default async function PlanDetailPage({
     console.error("Error parseando features", e);
   }
 
+  // Validamos si la categoría pertenece a Marketing para los textos dinámicos
+  const isMarketing = plan.categories_nc?.name === "Planes de marketing";
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f5f2ff] pb-24 pt-32 text-[#171020]">
       {/* Fondo limpio */}
@@ -145,12 +148,16 @@ export default async function PlanDetailPage({
               <span className="h-2 w-2 rounded-full bg-[#ff4fd8] shadow-[0_0_14px_rgba(255,79,216,0.8)]" />
 
               <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#a99cff]">
-                Strategy · Communication · Growth
+                {locale === "es" 
+                  ? (isMarketing ? "Estrategia · Comunicación · Crecimiento" : "Servicios · Soporte · Crecimiento") 
+                  : (isMarketing ? "Strategy · Communication · Growth" : "Services · Support · Growth")}
               </span>
             </div>
 
             <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#81788f]">
-              01 / Strategy
+              01 / {locale === "es" 
+                    ? (isMarketing ? "Estrategia" : "Servicio") 
+                    : (isMarketing ? "Strategy" : "Service")}
             </span>
           </div>
         </div>
@@ -166,13 +173,13 @@ export default async function PlanDetailPage({
                 <div className="mb-10 flex flex-col justify-between gap-5 border-b border-[#7b4dff]/10 pb-7 sm:flex-row sm:items-end">
                   <div>
                     <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.26em] text-[#7b4dff]">
-                      02 / Deliverables
+                      02 / {isEs ? "Entregables":"Deliverables"}
                     </span>
 
                     <h3 className="text-2xl font-bold tracking-[-0.03em] text-[#171020] md:text-3xl">
                       {isEs
-                        ? "¿Qué incluye esta estrategia?"
-                        : "What is included in this strategy?"}
+                        ? (isMarketing ? "¿Qué incluye esta estrategia?" : "¿Qué incluye este servicio?")
+                        : (isMarketing ? "What is included in this strategy?" : "What is included in this service?")}
                     </h3>
                   </div>
 
@@ -217,8 +224,8 @@ export default async function PlanDetailPage({
 
               <span className="text-xs text-[#91879f]">
                 {isEs
-                  ? "Estrategia orientada a resultados"
-                  : "Results-driven strategy"}
+                  ? (isMarketing ? "Estrategia orientada a resultados" : "Servicio adicional a la medida")
+                  : (isMarketing ? "Results-driven strategy" : "Custom additional service")}
               </span>
             </div>
           </div>
@@ -234,7 +241,7 @@ export default async function PlanDetailPage({
                 <div className="mb-7 flex items-center justify-between">
                   <div>
                     <span className="mb-2 block text-[9px] font-bold uppercase tracking-[0.25em] text-[#ff78df]">
-                      03 / Inversion
+                      03 / {isEs ? "Inversión" : "Investment"}
                     </span>
 
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#91879f]">
@@ -271,8 +278,6 @@ export default async function PlanDetailPage({
                         : "100% secure and encrypted payment."}
                     </p>
                   </div>
-
-                  
                 </div>
               </div>
             </div>
