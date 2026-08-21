@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { Plan } from "@/types";
 import { PlanGrid } from "./PlanGrid";
+import { getTranslation } from "@/lib/translator"; // 1. Importamos tu utilidad de traducción
 
 export default async function ServicesPage({
   params,
@@ -19,6 +20,25 @@ export default async function ServicesPage({
 
   // Textos según el idioma
   const isEs = locale === "es";
+
+  // === 2. LÓGICA DE TRADUCCIÓN ===
+  // Creamos una nueva variable para guardar los planes traducidos
+  let displayPlans = plans || [];
+
+  if (!isEs && plans) {
+    // Si no es español, mapeamos cada plan de forma asíncrona
+    displayPlans = await Promise.all(
+      plans.map(async (plan) => {
+        const translatedTitle = await getTranslation(plan.title, locale);
+        return {
+          ...plan,
+          title: translatedTitle, // Reemplazamos el título original por el traducido
+        };
+      })
+    );
+  }
+  // ================================
+
   const tagText = isEs
     ? "Nuestras Estrategias"
     : "Our Strategies";
@@ -29,6 +49,8 @@ export default async function ServicesPage({
     : "Comprehensive proposals created to strengthen your brand presence and turn every action into measurable results.";
 
   return (
+    // Reemplaza los "duration-[700ms]" u otros valores en Tailwind que te daban warnings 
+    // usando la escala de Tailwind (ej. duration-700) o transition-duration-[700ms] si los tienes en este u otros archivos.
     <main className="relative min-h-screen overflow-hidden bg-[#f5f2ff] pb-24 pt-32">
       {/* Fondo limpio */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_7%_18%,rgba(123,77,255,0.14),transparent_27%),radial-gradient(circle_at_93%_76%,rgba(255,79,216,0.10),transparent_25%),linear-gradient(180deg,#faf8ff_0%,#eee9ff_100%)]" />
@@ -109,12 +131,12 @@ export default async function ServicesPage({
             </h2>
           </div>
 
-          {plans && plans.length > 0 && (
+          {displayPlans && displayPlans.length > 0 && (
             <div className="inline-flex items-center gap-3 self-start rounded-[14px] border border-[#7b4dff]/15 bg-white/75 px-4 py-3 shadow-[0_12px_30px_rgba(54,36,105,0.07)] sm:self-auto">
               <span className="h-2 w-2 rounded-full bg-[#7b4dff]" />
 
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#756d86]">
-                {String(plans.length).padStart(2, "0")}{" "}
+                {String(displayPlans.length).padStart(2, "0")}{" "}
                 {isEs ? "planes disponibles" : "available plans"}
               </span>
             </div>
@@ -122,14 +144,15 @@ export default async function ServicesPage({
         </div>
 
         {/* Planes */}
-        {plans && plans.length > 0 ? (
+        {displayPlans && displayPlans.length > 0 ? (
           <div className="relative">
             <div className="pointer-events-none absolute -left-16 top-1/3 h-44 w-44 rounded-full bg-[#7b4dff]/10 blur-[80px]" />
 
             <div className="pointer-events-none absolute -right-16 bottom-1/4 h-44 w-44 rounded-full bg-[#ff4fd8]/8 blur-[80px]" />
 
             <div className="relative z-10">
-              <PlanGrid plans={plans as Plan[]} locale={locale} />
+              {/* 3. Pasamos el arreglo ya traducido al Client Component */}
+              <PlanGrid plans={displayPlans as Plan[]} locale={locale} />
             </div>
           </div>
         ) : (
